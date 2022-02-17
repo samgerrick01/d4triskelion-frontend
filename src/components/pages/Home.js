@@ -33,14 +33,16 @@ const Home = () => {
           alt="d4"
         />
       </div>
-      <div className="flex items-center justify-center">
-        <button
-          onClick={() => navigate("/home")}
-          className="text-white border border-blue-600 pl-2 pr-2 text-xl rounded-lg bg-slate-900"
-        >
-          Goto Home
-        </button>
-      </div>
+      {localStorage.length && (
+        <div className="flex items-center justify-center">
+          <button
+            onClick={() => navigate("/home")}
+            className="text-white border border-blue-600 pl-2 pr-2 text-xl rounded-lg bg-slate-900"
+          >
+            Goto Home
+          </button>
+        </div>
+      )}
     </div>
   );
 };
