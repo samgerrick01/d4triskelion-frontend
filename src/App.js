@@ -21,20 +21,20 @@ const App = () => {
             <Route
               path="/home"
               exact
-              element={localStorage.length === 0 ? <Home /> : <HomePage />}
+              element={localStorage.length === 0 ? <Auth /> : <HomePage />}
             />
             <Route
               path="/add"
-              element={localStorage.length === 0 ? <Home /> : <AddForm />}
+              element={localStorage.length === 0 ? <Auth /> : <AddForm />}
             />
             <Route
               path="/members"
               exact
-              element={localStorage.length === 0 ? <Home /> : <ViewMembers />}
+              element={localStorage.length === 0 ? <Auth /> : <ViewMembers />}
             />
             <Route
               path="/members/update/:id"
-              element={localStorage.length === 0 ? <Home /> : <UpdateMember />}
+              element={localStorage.length === 0 ? <Auth /> : <UpdateMember />}
             />
           </Route>
 

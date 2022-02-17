@@ -9,3 +9,8 @@
     display: none;
   }
 }
+@media screen and (min-width: 480.1px) and (max-width: 820px) {
+  .toolBar {
+    display: none;
+  }
+}

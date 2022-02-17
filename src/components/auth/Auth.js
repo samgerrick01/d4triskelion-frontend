@@ -22,8 +22,11 @@ const Auth = () => {
     setFormData({ userName: "", userPass: "" });
   };
   return (
-    <div className="flex items-center h-80vh mobile:h-screen">
-      <div className="container bg-zinc-800 rounded-lg h-52 flex flex-col items-center justify-center gap-5 p-5 text-white mobile:h-64">
+    <div className="flex items-center h-80vh mobile:h-screen tablet:h-screen">
+      <div
+        className="container bg-zinc-800 rounded-lg h-52 flex flex-col items-center justify-center gap-5 p-5 text-white 
+      mobile:h-64"
+      >
         <h1 className="text-2xl">Administrator</h1>
         <label>
           Username&nbsp;:
