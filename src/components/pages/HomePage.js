@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaAddressCard } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 
-const HomePage = () => {
+const HomePage = ({ isAuth }) => {
   const navigate = useNavigate();
   return (
     <div
@@ -22,7 +22,13 @@ const HomePage = () => {
           className="flex justify-center items-center text-black border-2 text-4xl rounded bg-gray-300 w-96 h-full p-1 
         mobile:w-40 mobile:h-20 mobile:rounded-xl mobile:text-2xl 
         tablet:w-52 tablet:h-32 tablet:text-2xl"
-          onClick={() => navigate("/add")}
+          onClick={() => {
+            if (isAuth === "admin") {
+              navigate("/add");
+            } else {
+              window.alert("You need administrator permission to Add Members!");
+            }
+          }}
         >
           <FaAddressCard className="w-1/2 h-1/2" />
           Add Member

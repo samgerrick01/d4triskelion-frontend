@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleMember from "./components/pages/SingleMember";
 import Home from "./components/pages/Home";
@@ -10,34 +10,46 @@ import ViewMembers from "./components/pages/ViewMembers";
 import UpdateMember from "./components/pages/UpdateMember";
 import WithHeader from "./components/WithHeader";
 import WithOutHEader from "./components/WithOutHEader";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
+  const [isAuth, setIsAuth] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      setIsAuth(null);
+    } else {
+      var result = JSON.parse(localStorage.getItem("profile")).result.userType;
+      setIsAuth(result);
+    }
+    console.log(isAuth);
+  });
   return (
     <div className="flex justify-center items-center flex-col">
       <Router>
         <Routes>
           <Route element={<WithHeader />}>
             <Route path="/" exact element={<Home />} />
-            <Route
-              path="/home"
-              exact
-              element={localStorage.length === 0 ? <Auth /> : <HomePage />}
-            />
-            <Route
-              path="/add"
-              element={localStorage.length === 0 ? <Auth /> : <AddForm />}
-            />
-            <Route
-              path="/members"
-              exact
-              element={localStorage.length === 0 ? <Auth /> : <ViewMembers />}
-            />
-            <Route
-              path="/members/update/:id"
-              element={localStorage.length === 0 ? <Auth /> : <UpdateMember />}
-            />
           </Route>
-
+          <Route element={<ProtectedRoute isAuth={isAuth} />}>
+            <Route element={<WithHeader />}>
+              <Route
+                path="/home"
+                exact
+                element={<HomePage isAuth={isAuth} />}
+              />
+              <Route path="/add" element={<AddForm isAuth={isAuth} />} />
+              <Route
+                path="/members"
+                exact
+                element={<ViewMembers isAuth={isAuth} />}
+              />
+              <Route
+                path="/members/update/:id"
+                element={<UpdateMember isAuth={isAuth} />}
+              />
+            </Route>
+          </Route>
           <Route element={<WithOutHEader />}>
             <Route path="/auth" exact element={<Auth />} />
             <Route path="/auth/register" exact element={<Register />} />

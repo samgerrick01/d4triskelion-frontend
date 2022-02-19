@@ -7,7 +7,11 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //STATE
-  const [formData, setFormData] = useState({ userName: "", userPass: "" });
+  const [formData, setFormData] = useState({
+    userName: "",
+    userPass: "",
+    userType: "user",
+  });
   //EVENTS
   const handleSubmit = (e) => {
     e.preventDefault();

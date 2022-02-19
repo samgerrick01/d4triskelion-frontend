@@ -5,7 +5,7 @@ import { createMember } from "../../actions/members";
 import logo from "../../images/d4logo.png";
 import { useNavigate } from "react-router-dom";
 
-const AddForm = () => {
+const AddForm = ({ isAuth }) => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,23 +26,28 @@ const AddForm = () => {
   //EVENTS
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      !postData.fullName ||
-      !postData.allias ||
-      !postData.age ||
-      !postData.birthDate ||
-      !postData.tBirth ||
-      !postData.selectedFile ||
-      !postData.gtDuringIR ||
-      !postData.mwwExtDuringIR ||
-      !postData.mwwIntDuringIR
-    ) {
-      setError("Don't Leave any field Blanks!");
+
+    if (isAuth === "admin") {
+      if (
+        !postData.fullName ||
+        !postData.allias ||
+        !postData.age ||
+        !postData.birthDate ||
+        !postData.tBirth ||
+        !postData.selectedFile ||
+        !postData.gtDuringIR ||
+        !postData.mwwExtDuringIR ||
+        !postData.mwwIntDuringIR
+      ) {
+        setError("Don't Leave any field Blanks!");
+      } else {
+        dispatch(createMember(postData));
+        window.alert("Member has been Added!");
+        navigate("/home");
+        clear();
+      }
     } else {
-      dispatch(createMember(postData));
-      window.alert("Member has been Added!");
-      navigate("/home");
-      clear();
+      window.alert("You dont have administrator permission to Add Members!");
     }
   };
 

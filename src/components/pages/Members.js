@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteMember } from "../../actions/members";
 
-const Members = ({ member, id }) => {
+const Members = ({ member, id, isAuth }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Members = ({ member, id }) => {
         tablet:w-60"
       >
         <img
-          className="rounded-tl-lg rounded-tr-lg h-full w-full"
+          className="rounded-tl-lg rounded-tr-lg w-full h-80"
           src={member.selectedFile}
           alt="2x2"
         />
@@ -45,11 +45,29 @@ const Members = ({ member, id }) => {
       tablet:w-60"
       >
         <FaEdit
-          onClick={() => navigate(`/members/update/${id}`)}
+          opacity={isAuth === "admin" ? 1 : 0.3}
+          onClick={() => {
+            if (isAuth === "admin") {
+              navigate(`/members/update/${id}`);
+            } else {
+              window.alert(
+                "You need administrator permission to Edit a Member!"
+              );
+            }
+          }}
           className="cursor-pointer w-7 h-7"
         />
         <FaTrash
-          onClick={() => handleDelete(member)}
+          opacity={isAuth === "admin" ? 1 : 0.3}
+          onClick={() => {
+            if (isAuth === "admin") {
+              handleDelete(member);
+            } else {
+              window.alert(
+                "You need administrator permission to Delete a Member!"
+              );
+            }
+          }}
           className="cursor-pointer w-7 h-7"
         />
         <FaEye

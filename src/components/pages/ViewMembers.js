@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { getMembers } from "../../actions/members";
 import { useNavigate } from "react-router-dom";
 
-const ViewMembers = () => {
+const ViewMembers = ({ isAuth }) => {
   const navigate = useNavigate();
   const members = useSelector((state) => state.members);
   const dispatch = useDispatch();
@@ -32,6 +32,9 @@ const ViewMembers = () => {
     </div>
   ) : (
     <>
+      <label className="text-white text-4xl">
+        Total Members : {members.length}
+      </label>
       <div className="border mb-5 rounded-full p-3 bg-blue-500">
         <button
           className="text-2xl font-bold"
@@ -43,7 +46,7 @@ const ViewMembers = () => {
       <div className="grid gap-5 grid-cols-3 grid-rows-4 tablet:grid-cols-2 mobile:grid-cols-1">
         {members.map((member) => (
           <div key={member._id}>
-            <Members member={member} id={member._id} />
+            <Members isAuth={isAuth} member={member} id={member._id} />
           </div>
         ))}
       </div>

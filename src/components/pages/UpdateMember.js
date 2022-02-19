@@ -6,7 +6,7 @@ import logo from "../../images/d4logo.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const UpdateMember = () => {
+const UpdateMember = ({ isAuth }) => {
   const dispatch = useDispatch();
   const member = useSelector((state) => state.members);
   let { id } = useParams();
@@ -28,24 +28,30 @@ const UpdateMember = () => {
   //EVENTS
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      !postData.fullName ||
-      !postData.allias ||
-      !postData.age ||
-      !postData.birthDate ||
-      !postData.tBirth ||
-      !postData.selectedFile ||
-      !postData.tStatus ||
-      !postData.chapter ||
-      !postData.gtDuringIR ||
-      !postData.mwwExtDuringIR ||
-      !postData.mwwIntDuringIR
-    ) {
-      setError("Don't Leave any field Blanks!");
+    if (isAuth === "admin") {
+      if (
+        !postData.fullName ||
+        !postData.allias ||
+        !postData.age ||
+        !postData.birthDate ||
+        !postData.tBirth ||
+        !postData.selectedFile ||
+        !postData.tStatus ||
+        !postData.chapter ||
+        !postData.gtDuringIR ||
+        !postData.mwwExtDuringIR ||
+        !postData.mwwIntDuringIR
+      ) {
+        setError("Don't Leave any field Blanks!");
+      } else {
+        dispatch(updateMember(id, postData));
+        window.alert("Member has been Update!");
+        navigate("/members");
+      }
     } else {
-      dispatch(updateMember(id, postData));
-      window.alert("Member has been Update!");
-      navigate("/members");
+      window.alert(
+        "You dont have administrator permission to Update a member!"
+      );
     }
   };
 
