@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleMember from "./components/pages/SingleMember";
 import Home from "./components/pages/Home";
@@ -15,7 +15,18 @@ import useLocalStorage from "./components/useLocalStorage";
 
 const App = () => {
   const [isAuth, setIsAuth] = useLocalStorage("isAuth", false);
-  console.log(isAuth);
+  const [account, setAccount] = useState(localStorage.setItem("account", ""));
+  //USE EFFECT
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isAuth")) === false) {
+      setAccount("");
+    } else {
+      localStorage.setItem(
+        "account",
+        JSON.parse(localStorage.getItem("profile")).result.userType
+      );
+    }
+  }, []);
   return (
     <div className="flex justify-center items-center flex-col">
       <Router>
@@ -25,21 +36,10 @@ const App = () => {
           </Route>
           <Route element={<ProtectedRoute isAuth={isAuth} />}>
             <Route element={<WithHeader setIsAuth={setIsAuth} />}>
-              <Route
-                path="/home"
-                exact
-                element={<HomePage isAuth={isAuth} />}
-              />
-              <Route path="/add" element={<AddForm isAuth={isAuth} />} />
-              <Route
-                path="/members"
-                exact
-                element={<ViewMembers isAuth={isAuth} />}
-              />
-              <Route
-                path="/members/update/:id"
-                element={<UpdateMember isAuth={isAuth} />}
-              />
+              <Route path="/home" exact element={<HomePage />} />
+              <Route path="/add" element={<AddForm />} />
+              <Route path="/members" exact element={<ViewMembers />} />
+              <Route path="/members/update/:id" element={<UpdateMember />} />
             </Route>
           </Route>
           <Route element={<WithOutHEader />}>

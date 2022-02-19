@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteMember } from "../../actions/members";
 
-const Members = ({ member, id, isAuth }) => {
+const Members = ({ member, id }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,9 +45,9 @@ const Members = ({ member, id, isAuth }) => {
       tablet:w-60"
       >
         <FaEdit
-          opacity={isAuth === "admin" ? 1 : 0.3}
+          opacity={localStorage.getItem("account") === "admin" ? 1 : 0.3}
           onClick={() => {
-            if (isAuth === "admin") {
+            if (localStorage.getItem("account") === "admin") {
               navigate(`/members/update/${id}`);
             } else {
               window.alert(
@@ -58,9 +58,9 @@ const Members = ({ member, id, isAuth }) => {
           className="cursor-pointer w-7 h-7"
         />
         <FaTrash
-          opacity={isAuth === "admin" ? 1 : 0.3}
+          opacity={localStorage.getItem("account") === "admin" ? 1 : 0.3}
           onClick={() => {
-            if (isAuth === "admin") {
+            if (localStorage.getItem("account") === "admin") {
               handleDelete(member);
             } else {
               window.alert(

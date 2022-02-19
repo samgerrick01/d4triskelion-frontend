@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaAddressCard } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 
-const HomePage = ({ isAuth }) => {
+const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div
@@ -23,7 +23,7 @@ const HomePage = ({ isAuth }) => {
         mobile:w-40 mobile:h-20 mobile:rounded-xl mobile:text-2xl 
         tablet:w-52 tablet:h-32 tablet:text-2xl"
           onClick={() => {
-            if (isAuth === "admin") {
+            if (localStorage.getItem("account") === "admin") {
               navigate("/add");
             } else {
               window.alert("You need administrator permission to Add Members!");

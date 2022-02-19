@@ -5,7 +5,7 @@ import { createMember } from "../../actions/members";
 import logo from "../../images/d4logo.png";
 import { useNavigate } from "react-router-dom";
 
-const AddForm = ({ isAuth }) => {
+const AddForm = () => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const AddForm = ({ isAuth }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (isAuth === "admin") {
+    if (localStorage.getItem("account") === "admin") {
       if (
         !postData.fullName ||
         !postData.allias ||

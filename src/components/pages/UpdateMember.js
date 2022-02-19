@@ -6,7 +6,7 @@ import logo from "../../images/d4logo.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const UpdateMember = ({ isAuth }) => {
+const UpdateMember = () => {
   const dispatch = useDispatch();
   const member = useSelector((state) => state.members);
   let { id } = useParams();
@@ -28,7 +28,7 @@ const UpdateMember = ({ isAuth }) => {
   //EVENTS
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isAuth === "admin") {
+    if (localStorage.getItem("account") === "admin") {
       if (
         !postData.fullName ||
         !postData.allias ||

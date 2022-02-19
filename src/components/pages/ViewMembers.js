@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { getMembers } from "../../actions/members";
 import { useNavigate } from "react-router-dom";
 
-const ViewMembers = ({ isAuth }) => {
+const ViewMembers = () => {
   const navigate = useNavigate();
   const members = useSelector((state) => state.members);
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const ViewMembers = ({ isAuth }) => {
       <div className="grid gap-5 grid-cols-3 grid-rows-4 tablet:grid-cols-2 mobile:grid-cols-1">
         {members.map((member) => (
           <div key={member._id}>
-            <Members isAuth={isAuth} member={member} id={member._id} />
+            <Members member={member} id={member._id} />
           </div>
         ))}
       </div>
