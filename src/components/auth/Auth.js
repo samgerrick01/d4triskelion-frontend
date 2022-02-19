@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../../actions/auth";
 
-const Auth = () => {
+const Auth = ({ setIsAuth }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //STATE
@@ -13,6 +13,7 @@ const Auth = () => {
     e.preventDefault();
 
     dispatch(signin(formData, navigate));
+    setIsAuth(true);
   };
 
   const handleInput = (e) => {

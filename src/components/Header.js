@@ -12,7 +12,7 @@ const Reload = () => {
   window.location.reload(false);
 };
 
-const Header = () => {
+const Header = ({ setIsAuth }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +24,7 @@ const Header = () => {
 
     navigate("/");
     setUser(null);
+    setIsAuth(false);
     Reload();
   };
 

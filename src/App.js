@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleMember from "./components/pages/SingleMember";
 import Home from "./components/pages/Home";
@@ -11,28 +11,20 @@ import UpdateMember from "./components/pages/UpdateMember";
 import WithHeader from "./components/WithHeader";
 import WithOutHEader from "./components/WithOutHEader";
 import ProtectedRoute from "./components/ProtectedRoute";
+import useLocalStorage from "./components/useLocalStorage";
 
 const App = () => {
-  const [isAuth, setIsAuth] = useState(null);
-
-  useEffect(() => {
-    if (localStorage.length === 0) {
-      setIsAuth(null);
-    } else {
-      var result = JSON.parse(localStorage.getItem("profile")).result.userType;
-      setIsAuth(result);
-    }
-    console.log(isAuth);
-  });
+  const [isAuth, setIsAuth] = useLocalStorage("isAuth", false);
+  console.log(isAuth);
   return (
     <div className="flex justify-center items-center flex-col">
       <Router>
         <Routes>
-          <Route element={<WithHeader />}>
+          <Route element={<WithHeader setIsAuth={setIsAuth} />}>
             <Route path="/" exact element={<Home />} />
           </Route>
           <Route element={<ProtectedRoute isAuth={isAuth} />}>
-            <Route element={<WithHeader />}>
+            <Route element={<WithHeader setIsAuth={setIsAuth} />}>
               <Route
                 path="/home"
                 exact
@@ -51,7 +43,11 @@ const App = () => {
             </Route>
           </Route>
           <Route element={<WithOutHEader />}>
-            <Route path="/auth" exact element={<Auth />} />
+            <Route
+              path="/auth"
+              exact
+              element={<Auth setIsAuth={setIsAuth} />}
+            />
             <Route path="/auth/register" exact element={<Register />} />
             <Route path="/members/viewmember/:id" element={<SingleMember />} />
           </Route>
