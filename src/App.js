@@ -15,18 +15,6 @@ import useLocalStorage from "./components/useLocalStorage";
 
 const App = () => {
   const [isAuth, setIsAuth] = useLocalStorage("isAuth", false);
-  const [account, setAccount] = useState(localStorage.setItem("account", ""));
-  //USE EFFECT
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem("isAuth")) === false) {
-      setAccount("");
-    } else {
-      localStorage.setItem(
-        "account",
-        JSON.parse(localStorage.getItem("profile")).result.userType
-      );
-    }
-  }, []);
   return (
     <div className="flex justify-center items-center flex-col">
       <Router>

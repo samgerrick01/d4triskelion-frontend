@@ -14,6 +14,7 @@ const Auth = ({ setIsAuth }) => {
 
     dispatch(signin(formData, navigate));
     setIsAuth(true);
+    localStorage.setItem("account", formData.userName);
   };
 
   const handleInput = (e) => {
