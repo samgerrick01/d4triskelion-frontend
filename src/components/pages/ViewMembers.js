@@ -18,8 +18,8 @@ const ViewMembers = () => {
   return !members.length ? (
     <div className="flex flex-col justify-center items-center mobile:h-screen">
       <CircularProgress />
-      <label className="text-white text-7xl text-center">
-        Data is Loading!
+      <label className="text-white text-5xl text-center">
+        Please Wait!, Database is Fetching.
       </label>
       <div className="border mt-5 rounded-full p-3 bg-blue-500">
         <button

@@ -18,6 +18,7 @@ const AddForm = () => {
     gtDuringIR: "",
     mwwIntDuringIR: "",
     mwwExtDuringIR: "",
+    rootChapter: "",
     chapter: "District IV Chapter",
     tStatus: "Active",
     selectedFile: "",
@@ -37,7 +38,8 @@ const AddForm = () => {
         !postData.selectedFile ||
         !postData.gtDuringIR ||
         !postData.mwwExtDuringIR ||
-        !postData.mwwIntDuringIR
+        !postData.mwwIntDuringIR ||
+        !postData.rootChapter
       ) {
         setError("Don't Leave any field Blanks!");
       } else {
@@ -61,6 +63,7 @@ const AddForm = () => {
       gtDuringIR: "",
       mwwIntDuringIR: "",
       mwwExtDuringIR: "",
+      rootChapter: "",
       chapter: "District IV Chapter",
       tStatus: "Active",
       selectedFile: "",
@@ -210,6 +213,21 @@ const AddForm = () => {
           />
           <span className="text-xl text-white text-opacity-50 bg-transparent absolute left-0 top-1 transition duration-500 input-text">
             MWW Ext During IR
+          </span>
+        </label>
+        {/* Root Chapter */}
+        <label className="relative cursor-text">
+          <input
+            type="text"
+            placeholder="Root Chapter"
+            className="h-8 mobile:w-64 w-80 px-2 text-xl text-white bg-transparent border-white border-b-2 outline-none focus:border-blue-600 placeholder-gray-300 placeholder-opacity-0 transition duration-500"
+            value={postData.rootChapter}
+            onChange={(e) =>
+              setPostData({ ...postData, rootChapter: e.target.value })
+            }
+          />
+          <span className="text-xl text-white text-opacity-50 bg-transparent absolute left-0 top-1 transition duration-500 input-text">
+            Root Chapter
           </span>
         </label>
         {/* Chapter */}

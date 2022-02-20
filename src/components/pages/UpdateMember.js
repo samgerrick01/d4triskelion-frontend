@@ -21,6 +21,7 @@ const UpdateMember = () => {
     gtDuringIR: "",
     mwwIntDuringIR: "",
     mwwExtDuringIR: "",
+    rootChapter: "",
     chapter: "",
     tStatus: "",
     selectedFile: "",
@@ -40,7 +41,8 @@ const UpdateMember = () => {
         !postData.chapter ||
         !postData.gtDuringIR ||
         !postData.mwwExtDuringIR ||
-        !postData.mwwIntDuringIR
+        !postData.mwwIntDuringIR ||
+        !postData.rootChapter
       ) {
         setError("Don't Leave any field Blanks!");
       } else {
@@ -199,11 +201,26 @@ const UpdateMember = () => {
             MWW Ext During IR
           </span>
         </label>
-        {/* Chapter */}
+        {/* Root Chapter */}
         <label className="relative cursor-text">
           <input
             type="text"
-            placeholder="Chapter"
+            placeholder="Root Chapter"
+            className="h-8 mobile:w-64 w-80 px-2 text-xl text-white bg-transparent border-white border-b-2 outline-none focus:border-blue-600 placeholder-gray-300 placeholder-opacity-0 transition duration-500"
+            value={postData.rootChapter || ""}
+            onChange={(e) =>
+              setPostData({ ...postData, rootChapter: e.target.value })
+            }
+          />
+          <span className="text-xl text-white text-opacity-50 bg-transparent absolute left-0 top-1 transition duration-500 input-text">
+            Root Chapter
+          </span>
+        </label>
+        {/* Current Chapter */}
+        <label className="relative cursor-text">
+          <input
+            type="text"
+            placeholder="Current Chapter"
             className="h-8 w-60 tablet:w-40 px-2 text-xl text-white bg-transparent border-white border-b-2 outline-none focus:border-blue-600 placeholder-gray-300 placeholder-opacity-0 transition duration-500"
             value={postData.chapter || ""}
             onChange={(e) =>
@@ -211,7 +228,7 @@ const UpdateMember = () => {
             }
           />
           <span className="text-xl text-white text-opacity-50 bg-transparent absolute left-0 top-1 transition duration-500 input-text">
-            Chapter
+            Current Chapter
           </span>
         </label>
         {/* Status */}

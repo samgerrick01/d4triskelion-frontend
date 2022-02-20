@@ -17,6 +17,7 @@ const SingleMember = () => {
     gtDuringIR: "",
     mwwIntDuringIR: "",
     mwwExtDuringIR: "",
+    rootChapter: "",
     chapter: "",
     tStatus: "",
     selectedFile: "",
@@ -62,7 +63,7 @@ const SingleMember = () => {
       mobile:pl-5 mobile:pr-5 mobile:ml-0 mobile:h-60 mobile:text-sm"
       >
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase 
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
@@ -71,7 +72,7 @@ const SingleMember = () => {
           <p> {state.fullName}</p>
         </label>
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
@@ -80,7 +81,7 @@ const SingleMember = () => {
           <p> {state.allias}</p>
         </label>
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
@@ -116,7 +117,7 @@ const SingleMember = () => {
           <p> {state.gtDuringIR}</p>
         </label>
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
@@ -125,7 +126,7 @@ const SingleMember = () => {
           <p> {state.mwwIntDuringIR}</p>
         </label>
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
@@ -134,16 +135,25 @@ const SingleMember = () => {
           <p> {state.mwwExtDuringIR}</p>
         </label>
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
         >
-          <p>Chapter :</p>
+          <p>Root Chapter :</p>
+          <p> {state.rootChapter}</p>
+        </label>
+        <label
+          className="flex justify-between w-full uppercase
+        mobile:flex mobile:justify-between mobile:w-full 
+        tablet:flex tablet:justify-between tablet:w-full 
+        laptop:flex laptop:justify-between laptop:w-full"
+        >
+          <p>Current Chapter :</p>
           <p> {state.chapter}</p>
         </label>
         <label
-          className="flex justify-between w-full 
+          className="flex justify-between w-full uppercase
         mobile:flex mobile:justify-between mobile:w-full 
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
