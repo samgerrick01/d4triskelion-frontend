@@ -44,12 +44,11 @@ const SingleMember = () => {
     </div>
   ) : (
     <div
-      className="grid mt-20 grid-cols-2 grid-rows-2 gap-2 
-      laptop:h-screen
-      tablet:ml-5 tablet:mr-5 tablet:h-screen 
+      className="grid mt-20 grid-cols-2 grid-rows-2 gap-2 laptop:w-4/5
+      tablet:flex tablet:flex-col tablet:justify-center tablet:items-center tablet:ml-5 tablet:mr-5 tablet:h-screen 
       mobile:flex mobile:flex-col mobile:justify-center mobile:items-center mobile:ml-2 mobile:mr-2 mobile:h-screen"
     >
-      <div className="box row-span-0 col-start-1 border-2 laptop:h-64 tablet:h-52 mobile:h-48">
+      <div className="box row-span-0 col-start-1 border-2 laptop:h-96 tablet:h-96 mobile:h-64">
         <img
           className="rounded-tl-lg rounded-lg h-full w-full"
           src={state.selectedFile}
@@ -58,9 +57,9 @@ const SingleMember = () => {
       </div>
       <div
         className="box w-full col-start-2 pr-8 flex justify-center ml-10 items-start flex-col text-2xl font-bold border-2 pl-8 
-      laptop:text-base laptop:h-64 laptop:pr-8 
-      tablet:pl-5 tablet:pr-5 tablet:ml-0 tablet:h-80 tablet:text-xl 
-      mobile:pl-5 mobile:pr-5 mobile:ml-0 mobile:h-60 mobile:text-sm"
+      laptop:text-lg laptop:h-96 laptop:pr-8 
+      tablet:pl-5 tablet:pr-5 tablet:ml-0 tablet:h-96 tablet:text-lg 
+      mobile:pl-5 mobile:pr-5 mobile:ml-0 mobile:h-64 mobile:text-xs"
       >
         <label
           className="flex justify-between w-full uppercase 
@@ -165,7 +164,7 @@ const SingleMember = () => {
       <div className="box1 row-span-5 col-span-2 gap-3 flex-col cursor-pointer flex items-center">
         <label
           className="font-serif text-5xl 
-        laptop:text-4xl 
+        laptop:text-4xl laptop:text-center
         tablet:text-2xl tablet:text-center 
         mobile:text-2xl mobile:text-center"
         >
