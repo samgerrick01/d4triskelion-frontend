@@ -76,7 +76,7 @@ const SingleMember = () => {
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
         >
-          <p>Allias :</p>
+          <p>Alias :</p>
           <p> {state.allias}</p>
         </label>
         <label
