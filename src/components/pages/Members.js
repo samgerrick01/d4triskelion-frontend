@@ -34,7 +34,7 @@ const Members = ({ member, id }) => {
       tablet:w-60"
       >
         <label>Name : {member.fullName}</label>
-        <label>Allias : {member.allias}</label>
+        <label>Alias : {member.allias}</label>
         <label>Chapter : {member.chapter}</label>
         <label>Status : {member.tStatus}</label>
         <label>Added Since : {moment(member.createdAt).fromNow()}</label>

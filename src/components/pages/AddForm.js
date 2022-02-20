@@ -121,7 +121,7 @@ const AddForm = () => {
             }
           />
           <span className="text-xl text-white text-opacity-50 bg-transparent absolute left-0 top-1 transition duration-500 input-text">
-            Allias
+            Alias
           </span>
         </label>
         {/* Age */}
