@@ -22,6 +22,7 @@ const SingleMember = () => {
     tStatus: "",
     selectedFile: "",
   });
+
   const dispatch = useDispatch();
   const member = useSelector((state) => state.members);
   let { id } = useParams();
@@ -35,6 +36,7 @@ const SingleMember = () => {
       setState({ ...member });
     }
   }, [member]);
+  const val = member.fullName;
   return !state.fullName ? (
     <div className="flex flex-col justify-center items-center mt-5 mobile:h-screen">
       <CircularProgress />
@@ -94,15 +96,6 @@ const SingleMember = () => {
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
         >
-          <p>Birth Date :</p>
-          <p> {state.birthDate}</p>
-        </label>
-        <label
-          className="flex justify-between w-full 
-        mobile:flex mobile:justify-between mobile:w-full 
-        tablet:flex tablet:justify-between tablet:w-full 
-        laptop:flex laptop:justify-between laptop:w-full"
-        >
           <p>T-Birth :</p>
           <p> {state.tBirth}</p>
         </label>
@@ -148,7 +141,7 @@ const SingleMember = () => {
         tablet:flex tablet:justify-between tablet:w-full 
         laptop:flex laptop:justify-between laptop:w-full"
         >
-          <p>Chapter :</p>
+          <p>Present Chapter :</p>
           <p> {state.chapter}</p>
         </label>
         <label
@@ -160,6 +153,11 @@ const SingleMember = () => {
           <p>Status :</p>
           <p> {state.tStatus}</p>
         </label>
+        {val === "EARL KELVIN SANGALANG" ? (
+          <label className="flex justify-center w-full uppercase tablet:text-lg mobile:text-sm laptop:text-lg">
+            <p>DISTRICT IV FOUNDER / ORGANIZER</p>
+          </label>
+        ) : null}
       </div>
       <div className="box1 row-span-5 col-span-2 gap-3 flex-col cursor-pointer flex items-center">
         <label

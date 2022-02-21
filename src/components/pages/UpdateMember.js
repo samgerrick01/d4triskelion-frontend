@@ -16,7 +16,6 @@ const UpdateMember = () => {
     fullName: "",
     allias: "",
     age: "",
-    birthDate: "",
     tBirth: "",
     gtDuringIR: "",
     mwwIntDuringIR: "",
@@ -34,7 +33,6 @@ const UpdateMember = () => {
         !postData.fullName ||
         !postData.allias ||
         !postData.age ||
-        !postData.birthDate ||
         !postData.tBirth ||
         !postData.selectedFile ||
         !postData.tStatus ||
@@ -124,21 +122,6 @@ const UpdateMember = () => {
           />
           <span className="text-xl text-white text-opacity-50 bg-transparent absolute left-0 top-1 transition duration-500 input-text">
             Age
-          </span>
-        </label>
-        {/* Birth Date */}
-        <label className="relative cursor-text">
-          <input
-            type="date"
-            placeholder="Birth Date"
-            className="h-8 w-60 tablet:w-40 px-2 text-xl text-white bg-transparent border-white border-b-2 outline-none focus:border-blue-600 placeholder-gray-300 placeholder-opacity-0 transition duration-500"
-            value={postData.birthDate || ""}
-            onChange={(e) =>
-              setPostData({ ...postData, birthDate: e.target.value })
-            }
-          />
-          <span className="text-sm text-white text-opacity-50 bg-transparent absolute left-0 -top-4 transition duration-500 input-text">
-            Birth Date
           </span>
         </label>
         {/* T-Birth */}
