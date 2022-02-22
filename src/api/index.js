@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = axios.create({ baseURL: "https://d4triskelion.herokuapp.com/" });
+const API = axios.create({ baseURL: "https://district4.herokuapp.com/" });
 // const API = axios.create({ baseURL: "http://localhost:5000/" });
 
 export const fetchMembers = () => API.get("/members");
